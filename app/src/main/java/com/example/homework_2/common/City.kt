@@ -1,12 +1,13 @@
 package com.example.homework_2.common
 
+import com.example.homework_2.R
 import java.util.Objects.nonNull
 
 class City(
     var name: String? = null,
     var country: String? = null,
     var isCapital: Boolean? = null,
-    var imagePath: String? = null
+    var image: Int = R.drawable.ic_launcher_background
 ) {
     fun description(): String {
         if (name == null)
