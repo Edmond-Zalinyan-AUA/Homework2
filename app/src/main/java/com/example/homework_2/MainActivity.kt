@@ -3,17 +3,20 @@ package com.example.homework_2
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.homework_2.contentManager.CityInitializer
 import com.example.homework_2.view.compose.CitiesListScreen
 import com.example.homework_2.view.compose.WelcomingScreen
+import com.example.homework_2.viewModel.DataLoaderViewModel
 
 class MainActivity : ComponentActivity() {
+    private val viewModel: DataLoaderViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val cities = CityInitializer.initCities();
+        val cities = CityInitializer.initCities()
         setContent {
             val navController = rememberNavController()
             NavHost(navController = navController, startDestination = "WelcomeScreen") {
@@ -21,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     WelcomingScreen(navController = navController)
                 }
                 composable(route = "CitiesListScreen") {
-                    CitiesListScreen(cities = cities, navController = navController)
+                    CitiesListScreen(cities = cities, navController = navController, viewModel = viewModel)
                 }
             }
         }
