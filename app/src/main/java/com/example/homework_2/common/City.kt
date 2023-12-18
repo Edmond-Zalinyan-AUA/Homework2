@@ -17,7 +17,7 @@ class City(
         if (isCapital!! && nonNull(country))
             description += "$name is the capital of $country."
         else if (nonNull(country))
-            description += "$name is a country located in $country."
+            description += "$name is a city located in $country."
         description += " Very beautiful city to live in."
         return description
     }
